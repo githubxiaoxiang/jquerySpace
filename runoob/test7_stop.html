@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    </meta>
+    <title>jQuery 停止动画</title>
+    <script src="http://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js">
+    </script>
+    <script>
+        $(document).ready(() => {
+            var panel = $("#panel");
+            $("#start").click(() => {
+                panel.animate({
+                    left: '250px'
+                }, 5000)
+                panel.animate({
+                    fontSize: '2em'
+                }, 5000)
+            });
+            $("#stop").click(() => {
+                panel.stop();
+            })
+            $("#stopAll").click(() => {
+                panel.stop(true);
+            })
+            $("#stopAllToEnd").click(() => {
+                panel.stop(true, true);
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <button id="start">开始</button>
+    <button id="stop">停止</button>
+    <button id="stopAll">停止所有</button>
+    <button id="stopAllToEnd">停止动画，但完成动作</button>
+    <p>点击开始按钮，开始动画</p>
+    <p>点击 "停止" 按钮停止当前激活的动画，但之后我们能再动画队列中再次激活。</p>
+    <p>点击 "停止所有" 按钮停止当前动画，并清除动画队列，所以元素的所有动画都会停止。</p>
+    <p>点击 "停止动画，但完成动作" 快速完成动作，并停止它。</p>
+    <div id="panel" style="width: 100px;height: 100px;background-color: red;position:absolute;">hello</div>
+</body>
+
+</html>
