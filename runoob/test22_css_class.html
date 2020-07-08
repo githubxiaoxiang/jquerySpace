@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    </meta>
+    <title></title>
+    <script src="http://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js">
+    </script>
+    <style>
+        .important {
+            font-weight: bold;
+            font-size: 36px;
+        }
+        
+        .blue {
+            color: blue;
+        }
+    </style>
+
+</head>
+
+<body>
+    <button id="btn1">为元素添加class</button>
+    <button id="btn2">从元素中移除class</button>
+    <button id="btn3">切换class</button>
+    <h1>标题1</h1>
+    <h2>标题2</h2>
+    <p>这是段落1</p>
+    <p>这是另外一个段落。</p>
+    <div id="div1">这是一个文本</div>
+    <div id="div2">这是一个重要文本</div>
+    <script>
+        $(document).ready(() => {
+            $("#btn1").click(() => {
+                $("h1,h2,p").addClass("blue");
+                // $("#div1").addClass("important blue");
+                // $("#div2").addClass("important");
+                $("body div:first").addClass("important blue");
+                $("body div:last").addClass("important");
+            })
+            $("#btn2").click(() => {
+                $("h1,h2,p").removeClass("blue");
+                $("div").removeClass("important");
+            })
+            $("#btn3").click(() => {
+                $("h1,h2,p").toggleClass("blue");
+            })
+        })
+    </script>
+</body>
+
+</html>

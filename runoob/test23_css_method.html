@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    </meta>
+    <title></title>
+    <script src="http://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js">
+    </script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <button id="btn1">返回第一个元素的颜色值</button>
+    <button id="btn2">设置颜色值</button>
+    <button id="btn3">设置多个css属性值</button>
+    <p id="p1" style="background-color: red;" }>这是第一个段落</p>
+    <p id="p2" style="background-color: blue;">这是第二个段落</p>
+    <p id="p3" style="background-color: yellow;">这是第三个段落</p>
+    <script>
+        $(document).ready(() => {
+            //返回css属性
+            $("#btn1").click(() => {
+                alert("第一个颜色值为：" + $("p").css("background-color"));
+            });
+            //设置css属性
+            $("#btn2").click(() => {
+                $("#p1").css("background-color", "green");
+            });
+            //设置多个css属性
+            $("#btn3").click(() => {
+                $("#p1").css({
+                    "background-color": "yellow",
+                    "font-weight": "bold",
+                    "font-size": "36px"
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
