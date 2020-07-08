@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    </meta>
+    <title>jquery 设置属性和内容</title>
+    <script src="http://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js">
+    </script>
+    <script>
+        $(document).ready(() => {
+            // $("#btn1").click(() => {
+            //     $("#txt1").text("改名文本1");
+            // })
+            // $("#btn2").click(() => {
+            //     $("#txt2").html("改变html<u>样式</u>");
+            // })
+            // $("#btn3").click(() => {
+            //     $("#name").val("新的名字");
+            // })
+
+            //text()、html() 以及 val()，同样拥有回调函数。回调函数有两个参数：被选元素列表中当前元素的下标，以及原始（旧的）值。然后以函数新值返回您希望使用的字符串。
+            $("#btn1").click(() => {
+                $("#txt1").text((index, oriText) => {
+                    return "旧文本：" + oriText + "------新文本：改名文本1-----" + "index值：" + index;
+                });
+            })
+            $("#btn2").click(() => {
+                $("#txt2").html((index, oriHtml) => {
+                    return "旧html：" + oriHtml + "------新html：改变html<u>样式</u>-----" + "index值：" + index;
+                });
+            })
+            $("#btn3").click(() => {
+                    $("#name").val((index, oriValue) => {
+                        return "旧值：" + oriValue + "------新值：新的名字-----" + "index值：" + index;
+                    });
+                })
+                //attr() 方法也允许您同时设置多个属性。
+            $("#btn4").click(() => {
+                // $("#link").attr("href", "http://www.baidu.com");
+                $("#link").attr({
+                    "href": "http://www.baidu.com",
+                    "title": "百度"
+                });
+                var title = $("#link").attr("title");
+                $("#link").html(title)
+            })
+            $("#btn5").click(() => {
+                $("#link").attr("href", (i, oriValue) => {
+                    alert("旧href:" + oriValue + "-----------" + "新href:" + oriValue + "/jquery");
+                })
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <button id="btn1">设置文本</button>
+    <button id="btn2">设置html</button>
+    <button id="btn3">设置值</button>
+    <button id="btn4">修改href</button>
+    <button id="btn5">attr回调</button>
+    <p id="txt1">我的第一个文本</p>
+    <p id="txt2">hello <b>文本</b></p>
+    <p>名字：<input id="name" value="我的名字"></input>
+    </p>
+    <p>
+        <a href="http://www.runoob.com" id="link">菜鸟教程</a>
+    </p>
+</body>
+
+</html>
