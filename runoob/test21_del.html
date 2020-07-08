@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    </meta>
+    <title>jQuery - 删除元素</title>
+    <script src="http://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js">
+    </script>
+    <style>
+        .div1 {
+            width: 300px;
+            height: 100px;
+            border: solid 1px red;
+            background-color: sandybrown;
+            display: block;
+            align-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn1">移除div</button>
+    <button id="btn2">移除内部元素</button>
+    <button id="btn3">过滤删除</button>
+    <div class="div1">
+        这是div中的一些文本
+        <p>我是第一个段落</p>
+        <p>我是第二个段落</p>
+    </div>
+    <span>s1</span>
+    <p>外部段落</p>
+    <p class="italic"><i>外部段落1</i></p>
+    <p class="italic"><i>外部段落2</i></p>
+    <script>
+        $(document).ready(() => {
+            $("#btn1").click(() => {
+                $(".div1").remove();
+            });
+
+            $("#btn2").click(() => {
+                $(".div1").empty();
+            });
+
+            $("#btn3").click(() => {
+                $("p").remove(".italic");
+            });
+        });
+    </script>
+</body>
+
+</html>
