@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    </meta>
+    <title></title>
+    <script src="http://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js">
+    </script>
+    <style>
+        #ancestors * {
+            display: block;
+            margin: 15px;
+            padding: 5px;
+            color: lightgrey;
+            border: solid 1px lightgrey;
+        }
+        
+        #div1,
+        #div2 {
+            width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn1">span父元素标红</button>
+    <button id="btn2">span所有祖先标红</button>
+    <button id="btn3">span过滤ul祖先标红</button>
+    <button id="btn4">span到div的祖先标红（不含div）</button>
+    <button id="btn5">span到div的过滤p祖先标红（不含div）</button>
+    <div id="ancestors">
+        <div id="div1">
+            div(曾祖父元素)
+            <ul>
+                ul(祖父元素)
+                <li>
+                    li(父元素)
+                    <span>span</span>
+                </li>
+            </ul>
+        </div>
+        <div id="div2">
+            div(祖父元素)
+            <p>
+                p(父元素)
+                <span>span</span>
+            </p>
+        </div>
+    </div>
+    <script>
+        $(document).ready(() => {
+            //parent() 方法返回被选元素的直接父元素
+            $("#btn1").click(() => {
+                $("span").parent().css({
+                    "color": "red",
+                    "border": "solid 1px red"
+                });
+            });
+            //parents() 方法返回被选元素的所有祖先元素，它一路向上直到文档的根元素 (<html>)。
+            $("#btn2").click(() => {
+                $("span").parents().css({
+                    "color": "red",
+                    "border": "solid 1px red"
+                });
+            });
+            //parents() 带参数过滤对祖先元素
+            $("#btn3").click(() => {
+                $("span").parents("ul").css({
+                    "color": "red",
+                    "border": "solid 1px red"
+                });
+            });
+            //parentsUntil() 方法返回介于两个给定元素之间的所有祖先元素。
+            $("#btn4").click(() => {
+                $("span").parentsUntil("div").css({
+                    "color": "red",
+                    "border": "solid 1px red"
+                });
+            });
+            //parentsUntil() 方法返回介于两个给定元素之间的所有祖先元素。 带过滤 
+            $("#btn5").click(() => {
+                $("span").parentsUntil("div", "p").css({
+                    "color": "red",
+                    "border": "solid 1px red"
+                });
+            });
+        })
+    </script>
+</body>
+
+</html>
