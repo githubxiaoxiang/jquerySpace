@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    </meta>
+    <title>jQuery 尺寸</title>
+    <script src="http://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js">
+    </script>
+    <style>
+        #div1 {
+            width: 300px;
+            height: 100px;
+            background-color: lightblue;
+            padding: 10px;
+            margin: 3px;
+            border: solid 1px red;
+        }
+        
+        #div2 {
+            width: 300px;
+            height: 100px;
+            background-color: lightblue;
+            padding: 10px;
+            margin: 3px;
+            border: solid 1px red;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn1">显示 div 元素的尺寸</button>
+    <button id="btn2">显示 div 元素的inner尺寸</button>
+    <button id="btn3">显示 div 元素的outer尺寸</button>
+    <div id="div1"></div>
+    <button id="btn4">显示 div2 元素的尺寸</button>
+    <button id="btn5">显示 div2 元素的inner尺寸</button>
+    <button id="btn6">显示 div2 元素的outer尺寸</button>
+    <div id="div2"></div>
+    <script>
+        $(document).ready(() => {
+            //width=content
+            //width() 方法设置或返回元素的宽度（不包括内边距、边框或外边距）。 height() 方法设置或返回元素的高度（不包括内边距、边框或外边距）。
+            $("#btn1").click(() => {
+                var ele = $("#div1");
+                var txt = "div的宽度是" + ele.width() + "<br>";
+                txt += "div的高度是" + ele.height();
+                ele.html(txt);
+                //300 100
+            });
+            //innerWidth() 方法返回元素的宽度（包括内边距）。 innerHeight() 方法返回元素的高度（包括内边距）。
+            $("#btn2").click(() => {
+                var ele = $("#div1");
+                var txt = "div的innerWidth是" + ele.innerWidth() + "<br>";
+                txt += "div的innerHeight是" + ele.innerHeight();
+                ele.html(txt);
+                //320 120
+            });
+            //outerWidth() 方法返回元素的宽度（包括内边距和边框）。 outerHeight() 方法返回元素的高度（包括内边距和边框）。
+            $("#btn3").click(() => {
+                var ele = $("#div1");
+                var txt = "div的outerWidth是" + ele.outerWidth() + "<br>";
+                txt += "div的outerHeight是" + ele.outerHeight();
+                ele.html(txt);
+                //322 122
+            });
+
+            //设置box-sizing:border-box 后 css中width=content+padding+border  outWidth=css中width
+            //width() 方法设置或返回元素的宽度（包括内边距、边框）。 height() 方法设置或返回元素的高度（包括内边距、边框）。
+            $("#btn4").click(() => {
+                var ele = $("#div2");
+                var txt = "div的宽度是" + ele.width() + "<br>";
+                txt += "div的高度是" + ele.height();
+                ele.html(txt);
+                //278 78
+            });
+            //innerWidth()  innerWidth=css中width-border
+            $("#btn5").click(() => {
+                var ele = $("#div2");
+                var txt = "div的innerWidth是" + ele.innerWidth() + "<br>";
+                txt += "div的innerHeight是" + ele.innerHeight();
+                ele.html(txt);
+                //298 98
+            });
+            //outerWidth() outerWidth=css中width-border-padding
+            $("#btn6").click(() => {
+                var ele = $("#div2");
+                var txt = "div的outerWidth是" + ele.outerWidth() + "<br>";
+                txt += "div的outerHeight是" + ele.outerHeight();
+                ele.html(txt);
+                //300 100
+            });
+        })
+    </script>
+</body>
+
+</html>
