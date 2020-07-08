@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    </meta>
+    <title></title>
+    <script src="http://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js">
+    </script>
+    <style>
+        .ancestors * {
+            display: block;
+            border: solid 2px lightgrey;
+            padding: 10px;
+            margin: 5px;
+            color: lightgrey;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn1">所有直接子元素标红</button>
+    <button id="btn2">所有直接子元素中过滤类p标签class为p1标红</button>
+    <button id="btn3">所有直接子元素中过滤类p标签id为pid2标红</button>
+    <button id="btn4">find所有子元素</button>
+    <button id="btn5">find所有子元素为span</button>
+    <button id="btn6">find所有子元素过滤类p标签class</button>
+    <div class=" ancestors ">
+        div(当前元素)
+        <p class="p1 " id="pid1 ">
+            p(儿子元素)
+            <span>
+                span(孙子元素)
+            </span>
+        </p>
+        <p class="p2 " id="pid2 ">
+            p(儿子元素)
+            <span>
+                span(孙子元素)
+            </span>
+        </p>
+        <ul>
+            ul(儿子元素)
+            <span>
+                span(孙子元素)
+            </span>
+        </ul>
+    </div>
+    <script>
+        $(document).ready(() => {
+            //所有直接子元素
+            $("#btn1").click(() => {
+                $("div").children().css({
+                    "color ": "red ",
+                    "border ": "solid 2px red "
+                });
+            });
+            //所有直接子元素中过滤类p标签class为p1标红
+            $("#btn2").click(() => {
+                $("div").children("p.p1").css({
+                    "color ": "red ",
+                    "border ": "solid 2px red "
+                });
+            });
+            //所有直接子元素中过滤类p标签id为pid2标红
+            $("#btn3").click(() => {
+                $("div").children("p#pid2").css({
+                    "color ": "red ",
+                    "border ": "solid 2px red "
+                });
+            });
+            //jQuery find() 方法 被选元素的后代元素，一路向下直到最后一个后代。
+            $("#btn4").click(() => {
+                $("div").find("*").css({
+                    "color": "red",
+                    "border": "solid 2px red"
+                });
+            });
+            //jQuery find() 方法 被选元素的后代元素，一路向下直到最后一个后代  过滤指定span标签  不能指定id 如：p#pid2
+            $("#btn5").click(() => {
+                $("div").find("span").css({
+                    "color": "red",
+                    "border": "solid 2px red"
+                });
+            });
+
+            //jQuery find() 方法 被选元素的后代元素，一路向下直到最后一个后代  过滤指定span标签  不能指定id 如：p#pid2
+            $("#btn6").click(() => {
+                $("div").find("p.p1").css({
+                    "color": "red",
+                    "border": "solid 2px red"
+                });
+            });
+        })
+    </script>
+</body>
+
+</html>
