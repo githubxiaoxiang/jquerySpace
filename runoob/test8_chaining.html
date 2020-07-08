@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    </meta>
+    <title>jQuery - 链(Chaining)</title>
+    <script src="http://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js">
+    </script>
+    <script>
+        $(document).ready(() => {
+            $("#btn").click(() => {
+                $("p").css("color", "red").slideUp(1000).slideDown(1000);
+            });
+        })
+    </script>
+</head>
+
+<body>
+    <button id="btn">链按钮</button>
+    <p>我是一个链测试文案</p>
+</body>
+
+</html>
