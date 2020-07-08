@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    </meta>
+    <title>jQuery - 添加元素 </title>
+    <script src="http://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js">
+    </script>
+    <script>
+        $(document).ready(() => {
+            // $("#btn1").click(() => {
+            //     $("p").append("<b>追加文本</b>");
+            // })
+            // $("#btn2").click(() => {
+            //     $("ol").append("<li>添加列表</li>")
+            // })
+
+            $("#btn1").click(() => {
+                $("#dialog").prepend("<b>在开头追加文本</b>");
+            });
+            $("#btn2").click(() => {
+                $("ol").prepend("<li>在开头添加列表</li>");
+            });
+            $("#btn4").click(() => {
+                $("img").before("图片之前插入");
+            });
+            $("#btn5").click(() => {
+                $("img").after("图片之后插入");
+            });
+            //append/prepend 是在选择元素内部嵌入。after/before 是在元素外面追加。
+            $("#btn7").click(() => {
+                $("#s").append('<span id="s2">s2</span>');
+            });
+            $("#btn8").click(() => {
+                $("#s").after('<span id="s2">s2</span>');
+            });
+        });
+        //通过 append() 和 prepend() 方法添加若干新元素
+        function appendText() {
+            //使用 HTML 标签创建文本
+            var txt1 = "<p>文本1</p>";
+            // 使用 jQuery 创建文本
+            var txt2 = $("<p></p>").text("文本2");
+            //使用 DOM 创建文本 text with DOM
+            var txt3 = document.createElement("p");
+            txt3.innerHTML = "文本3";
+            // $("body").append(txt1, txt2, txt3);
+            // $("body").prepend(txt1, txt2, txt3);
+            $("body").append([txt1, txt2, txt3]); //参数可以是个 数组列表
+        }
+
+        //通过 after() 和 before() 方法添加若干新元素
+        function afterText() {
+            //使用 HTML 标签创建元素
+            var txt1 = "<b>I</b>";
+            // 使用 jQuery 创建元素
+            var txt2 = $("<i></i>").text(" love ");
+            //使用 DOM 创建元素
+            var txt3 = document.createElement("t");
+            txt3.innerText = "jQuery!";
+            // $("#img").after(txt1, txt2, txt3);
+            // $("#img").before(txt1, txt2, txt3);
+            $("img").after([txt1, txt2, txt3]);
+        }
+    </script>
+</head>
+
+<body>
+    <button id="btn1">追加文本</button>
+    <button id="btn2">追加列表</button>
+    <button id="btn3" onclick="appendText()">追加元素</button>
+    <button id="btn4">before插入</button>
+    <button id="btn5">after插入</button>
+    <button id="btn6" onclick="afterText()">before，after追加元素</button>
+    <button id="btn7">append&after区别--append</button>
+    <button id="btn8">append&after区别--after</button>
+    <p id="dialog">这是段落1</p>
+    <ol>
+        <li>列表1</li>
+        <li>列表2</li>
+        <li>列表3</li>
+    </ol>
+    <img src="image/Tictok.png">
+    <p id="s">
+        <span class="s1">s1</span>
+    </p>
+</body>
+
+</html>
