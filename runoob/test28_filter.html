@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    </meta>
+    <title>jquery 过滤</title>
+    <script src="http://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js">
+    </script>
+    <link type="text/css" rel="stylesheet" href="css/comm.css"></link>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <button id="btn0">重置样式</button>
+    <button id="btn1">first过滤</button>
+    <button id="btn2">last过滤</button>
+    <button id="btn3">eq过滤</button>
+    <button id="btn4">filter过滤</button>
+    <button id="btn5">not过滤</button>
+    <div class="ancestors">
+        div
+        <p class="p1">p1</p>
+        <p>p2</p>
+        <p>p3</p>
+        <span>span</span>
+    </div>
+    <script>
+        $(document).ready(() => {
+            var clsName = "redSelete";
+            $("#btn0").click(() => {
+                $("div").find("*").removeClass(clsName);
+            });
+            //first() 方法返回被选元素列表的首个元素。
+            $("#btn1").click(() => {
+                // $("div p:first").addClass(clsName);
+                $("div p").first().addClass(clsName);
+            });
+            //last() 方法返回被选元素列表的最后一个元素。
+            $("#btn2").click(() => {
+                // $("div p:last").addClass(clsName);
+                $("div p").last().addClass(clsName);
+            });
+            //eq() 方法返回被选元素数组列表中带有指定索引号的元素。 索引从0开始
+            $("#btn3").click(() => {
+                //div 内部p元素
+                // $("div p").eq(1).addClass(clsName);
+                //整个body内 p元素
+                $("p").eq(1).addClass(clsName);
+            });
+            //filter() 方法允许您规定一个标准。不匹配这个标准的元素会被从集合列表中删除，匹配的元素会被返回。
+            $("#btn4").click(() => {
+                $("div p").filter(".p1").addClass(clsName);
+            });
+            //not() 方法返回不匹配标准的所有元素。  与filter 相反
+            $("#btn5").click(() => {
+                $("div p").not(".p1").addClass(clsName);
+            });
+        });
+    </script>
+</body>
+
+</html>
