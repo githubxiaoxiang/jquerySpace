@@ -39,7 +39,7 @@ attr()函数的结果:
 
 具有 true 和 false 两个属性的属性，如 checked, selected 或者 disabled 使用prop()
 
-## jQuery Aajax GET和POST
+## jQuery Ajax GET和POST
 GET 和 POST 方法的区别：
 1、发送的数据数量
 
