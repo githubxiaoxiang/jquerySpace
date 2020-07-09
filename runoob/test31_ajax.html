@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    </meta>
+    <title>jquery ajax</title>
+    <script src="http://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js">
+    </script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <button id="btn1">ajax操作</button>
+    <div id="div1">测试ajax</div>
+    <script>
+        /*
+         *xml：返回XML文档，可用JQuery处理。
+         *html：返回纯文本HTML信息；包含的script标签会在插入DOM时执行。
+         *script：返回纯文本JavaScript代码。不会自动缓存结果。除非设置了cache参数。注意在远程请求时（不在同一个域下），所有post请求都将转为get请求。
+         *json：返回JSON数据。
+         *jsonp：JSONP格式。使用SONP形式调用函数时，例如myurl?callback=?，JQuery将自动替换后一个“?”为正确的函数名，以执行回调函数。
+         *text：返回纯文本字符串。
+         */
+        $(document).ready(() => {
+            $("#btn1").click(() => {
+                $.ajax({
+                    url: "ajax/demo.html",
+                    type: "GET", //请求方式（post或get）默认为get
+                    dataType: "html",
+                    // data: {
+                    //     name: "aaa"
+                    // },
+                    // timeout: 150000,//请求超时时间（毫秒）
+                    async: true, //默认设置为true，所有请求均为异步请求。如果需要发送同步请求，请将此选项设置为false
+                    success: (data, textStatus) => {
+                        $("div").html($(data));
+                        alert("数据：" + data);
+                    },
+                    error: (xhr, textStatus) => {
+                        alert("Error:" + textStatus);
+                    }
+                });
+                //等效于
+                // $("div").load("ajax/demo.html");
+            })
+        })
+    </script>
+</body>
+
+</html>
