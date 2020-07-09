@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>jquery 同胞</title>
+    <meta charset="utf-8"></meta>
+    <script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js">
+    </script>
+    <link type="text/css" rel="stylesheet" href="css/comm.css"></link>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <button id="btn0">重置样式</button>
+    <button id="btn1">siblings获得同胞</button>
+    <button id="btn2">siblings带过滤获得同胞</button>
+    <button id="btn3">next获得同胞</button>
+    <button id="btn4">nextAll获得被选元素所有跟随同胞</button>
+    <button id="btn5">nextUntil获得之间同胞</button>
+    <button id="btn6">nextUntil带过滤获得之间同胞</button>
+    <div class="ancestors">
+        div(父元素)
+        <h1>h1</h1>
+        <h2>h2</h2>
+        <span>span</span>
+        <p>p</p>
+        <h3>h3</h3>
+        <h4>h4</h4>
+    </div>
+    <script>
+        var clsName = "redSelete";
+        $(document).ready(() => {
+            $("#btn0").click(() => {
+                $("h2").siblings().removeClass(clsName);
+            });
+            //siblings() 方法返回被选元素的所有同胞元素
+            $("#btn1").click(() => {
+                $("h2").siblings().addClass(clsName);
+            });
+
+            $("#btn2").click(() => {
+                $("h2").siblings("h4").addClass(clsName);
+            });
+            //next() 方法返回被选元素的下一个同胞元素。
+            $("#btn3").click(() => {
+                $("h2").next().addClass(clsName);
+            });
+
+            //nextAll() 方法返回被选元素的所有跟随的同胞元素。
+            $("#btn4").click(() => {
+                $("h2").nextAll().addClass(clsName);
+            });
+
+            //nextUntil() 方法返回介于两个给定参数之间的所有跟随的同胞元素。
+            $("#btn5").click(() => {
+                $("h2").nextUntil("h3").addClass(clsName);
+            });
+
+            //nextUntil() 带过滤
+            $("#btn6").click(() => {
+                $("h2").nextUntil("h3", "p").addClass(clsName);
+            });
+            //同理prev  prevAll prevUntil  沿着同胞之前元素遍历
+            // $("h2").prev()
+        })
+    </script>
+</body>
+
+</html>
