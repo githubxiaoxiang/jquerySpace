@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    </meta>
+    <title>jQuery - AJAX load() 方法</title>
+    <script src="http://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js">
+    </script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <button id="btn1">load获取外部文件</button>
+    <button id="btn2">load获取外部文件过滤指定元素</button>
+    <button id="btn3">load获取外部文件带回调</button>
+    <button id="btn4">load html获取外部文件</button>
+    <div id="div1">
+        <p>使用jquery load方法变更</p>
+    </div>
+
+    <div id="div2">
+    </div>
+    <script>
+        $(document).ready(() => {
+            $("#btn1").click(() => {
+                $("#div1").load("ajax/ajax_demo.txt");
+            });
+
+            $("#btn2").click(() => {
+                //p标签元素
+                // $("#div1").load("ajax/ajax_demo.txt p");
+                //id为p1的元素
+                // $("#div1").load("ajax/ajax_demo.txt #p1");
+                //class 为p1的元素
+                $("#div1").load("ajax/ajax_demo.txt .p1");
+            });
+
+            //回调函数
+            $("#btn3").click(() => {
+                $("#div1").load("ajax/ajax_demo.txt .p1", null, (responeText, statusText, xhr) => {
+                    if (statusText == "success") {
+                        alert("外部内容加载成功!\n信息内容：\n" + responeText);
+                    }
+                    if (statusText == "error") {
+                        alert("Error:" + xhr.status + ":" + xhr.statusText);
+                    }
+                });
+                // $("#div1").load("ajax/ajax_demo.txt .p1", null, (responeText, statusText, xhr) => {
+                //     if (statusText == "success") {
+                //         alert("外部内容加载成功!\n信息内容：\n" + responeText);
+                //     }
+                //     if (statusText == "error") {
+                //         alert("Error:" + xhr.status + ":" + xhr.statusText);
+                //     }
+                // });
+            });
+
+            //为了避免多页面情形下的代码重复，可以利用 load() 方法，将重复的部分（例如导航栏）放入单独的文件
+            $("#btn4").click(() => {
+                // $("#div2").load("ajax/demo.html");
+                $("#div2").load("ajax/demo.html p");
+            });
+        })
+    </script>
+</body>
+
+</html>

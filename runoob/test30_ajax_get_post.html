@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    </meta>
+    <title>Query - AJAX GET&POST() 方法</title>
+    <script src="http://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js">
+    </script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <button id="btn1">get获取数据</button>
+    <button id="btn2">post获取数据</button>
+    <script>
+        //$.get() 方法通过 HTTP GET 请求从服务器上请求数据。
+        $(document).ready(() => {
+            $("#btn1").click(() => {
+                //tomcat搭建php环境不成功 故输出的是整个文档的内容 非php echo输出
+                $.get("ajax/demo_test.php", (data, textStatus, xhr) => {
+                    alert("数据:" + data + ",状态:" + textStatus);
+                });
+            });
+
+            $("#btn2").click(() => {
+                //tomcat搭建php环境不成功 故输出的是整个文档的内容 非php echo输出
+                $.post("ajax/demo_test_post.php", {
+                    name: "aaa",
+                    sex: 1
+                }, (data, textStatus, xhr) => {
+                    alert("数据:" + data + ",状态:" + textStatus);
+                })
+            });
+        })
+    </script>
+</body>
+
+</html>
